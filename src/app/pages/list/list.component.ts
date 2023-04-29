@@ -14,8 +14,8 @@ export class ListComponent implements OnInit {
   listData!: IVendorDetails[];
   filteredValue!: IVendorDetails[];
   selectedRowId: string = '';
-  mobileViewEnabled: boolean =false;
-  constructor(private apiService: ApiService, private router: Router,private breakpointObserver: BreakpointObserver) {
+  mobileViewEnabled: boolean = false;
+  constructor(private apiService: ApiService, private router: Router, private breakpointObserver: BreakpointObserver) {
     this.breakpointObserver.observe(['(max-width: 577px)']).subscribe((state: BreakpointState) => {
       if (state.matches) {
         this.mobileViewEnabled = true;
@@ -25,7 +25,7 @@ export class ListComponent implements OnInit {
         this.mobileViewEnabled = false;
       }
     });
-    
+
   }
 
   ngOnInit(): void {
@@ -51,11 +51,12 @@ export class ListComponent implements OnInit {
     console.log(this.filteredValue)
   }
 
-  getDetails(data: IVendorDetails) {
-    console.log(data)
-    console.log(this.mobileViewEnabled)
-    if(!this.mobileViewEnabled){
-
+  getDetails(data: any) {
+    this.listData.forEach((data:any)=>{
+      data['activeIndex'] = false;
+    })
+    data['activeIndex'] = true;
+    if (!this.mobileViewEnabled) {
       this.selectedRowId = data._id;
     }
     else {

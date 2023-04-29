@@ -15,13 +15,13 @@
     }
     .p-datatable .p-datatable-thead > tr > th {
         background: unset !important;
-        color: gray !important;
+        color: var(--graytextcolor) !important;
         font-weight: 600 !important;
     }
 
     .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight):hover {
         i {
-            color: #000;
+            color: var(--blacktextcolor);
         }
     }
 }
@@ -29,13 +29,17 @@
     width: 25rem;
 }
 .option {
-    background: #324681;
-    color: #fff;
+    background: var(--darkbluecolor);
+    color: var(--whitetextcolor);
     padding: 10px;
     font-weight: 500 !important;
 }
 .w-unset {
     width: unset !important;
+}
+.active-index {
+    border-bottom: 4px solid var(--darkbluecolor);
+    padding: 0px 6px;
 }
 @media only screen and (max-width: 577px) {
     .container {

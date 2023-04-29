@@ -51,7 +51,8 @@
                     </td>
                     <td>
                         <div>
-                            <span (click)="getDetails(data)" class="cursor-pointer dark-blue-text font-medium">
+                            <span (click)="getDetails(data)" class="cursor-pointer dark-blue-text font-medium"
+                                [ngClass]="data['activeIndex']?'active-index':''">
                                 Details
                             </span>
                         </div>
