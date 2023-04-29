@@ -1,0 +1,21 @@
+<div class="grid m-0 p-2 xl:mt-8 md:mt-8 sm:mt-8">
+    <div class="col-12 xl:mt-2 md:mt-2 sm:mt-2">
+        <div class="description-section p-3 ">
+            <span>
+                No description yet
+                <span class="dark-blue-text font-semibold">+Add Description</span>
+            </span>
+        </div>
+        <span *ngIf="showBackButton" (click)="goBack()">
+            <i class="pi pi-arrow-left mt-3 text-lg cursor-pointer" ></i>
+        </span>
+    </div>
+
+    <div class="col-12 details-container overflow-auto" *ngIf="detailsData?.length" [ngStyle]="showBackButton?{'max-height': '87vh'}:{'max-height': '68vh'}">
+        <ng-container *ngFor="let value of detailsData">
+
+            <div class="faded-blue-color py-2 cursor-pointer font-semibold">{{value?.name}}</div>
+
+        </ng-container>
+    </div>
+</div>

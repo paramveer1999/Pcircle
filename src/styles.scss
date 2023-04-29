@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0px;
+}
+
+:root {
+    --lightbluecolor: #6cd6ff
+    --darkbluecolor: #324681
+}
+.light-blue-text {
+    color: var(--lightbluecolor);
+}
+.dark-blue-text {
+    color: #324681;
+}
+.light-gray-text{ 
+    color: lightgray;
+}
+.light-blue-text {
+    color: #6cd6ff;
+}
+.faded-blue-color {
+    color: #4D99B6;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    overflow-y: scroll;
+    background: lightgray;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00000021;
+    border-radius: 10px;
+    opacity: 50%;
+}

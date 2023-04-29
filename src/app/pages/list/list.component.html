@@ -1,0 +1,66 @@
+<div class="grid m-0">
+    <div class="col-12 sm:col-9 md:col-9  xl:col-9">
+        <p-table #dt [value]="listData" [globalFilterFields]="['name','entities','date']" [rowHover]="true">
+            <ng-template pTemplate="caption">
+                <div class="table-header relative sm:flex align-items-center justify-content-between">
+                    <div class="options">
+                        <span class="text-sm option font-medium">
+                            <i class="pi pi-bars text-sm "></i>&nbsp;
+                            SAVED LISTS
+                        </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="text-sm font-medium">
+                            <i class="pi pi-filter text-sm"></i>&nbsp;
+                            SAVED FILTERS
+                        </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="text-sm font-medium">
+                            <i class="pi pi-history text-sm"></i>&nbsp;
+                            SEARCH HISTORY
+                        </span>
+
+                    </div>
+                    <span class="relative inline-block text-field" style="width:48%">
+                        <input pInputText #inputRef type="text" class="w-full"
+                            (input)="dt.filterGlobal(inputRef.value, 'contains')" placeholder="Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Date</th>
+                    <th class="list-name">List Name</th>
+                    <th>No of Entities</th>
+                    <th>Actions</th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-data>
+                <tr class="table-body">
+                    <td class="font-medium light-gray-text"> {{data.date | date}}</td>
+                    <td [ngClass]="!data?.entities?'light-blue-text':' '" class="font-bold">{{data.name}}</td>
+                    <td>{{data.entities}}</td>
+                    <td>
+                        <div>
+                            <i
+                                class="pi pi-envelope cursor-pointer text-lg light-gray-text"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <i class="pi pi-share-alt cursor-pointer text-lg light-gray-text"
+                                *ngIf="data.entities">&nbsp;&nbsp;&nbsp;&nbsp;</i>
+                            <i class="pi pi-pencil cursor-pointer text-lg light-gray-text"
+                                *ngIf="data.entities">&nbsp;&nbsp;&nbsp;&nbsp;</i>
+                            <i class="pi pi-trash cursor-pointer text-lg light-gray-text" *ngIf="data.entities"></i>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <span (click)="getDetails(data)" class="cursor-pointer dark-blue-text font-medium">
+                                Details
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div class="col-3 container ">
+        <app-details [rowId]="selectedRowId"></app-details>
+    </div>
+</div>
